@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, forwardRef } from "react";
 import CheckBox from "./CheckBox";
 
-const CheckBoxGroup = React.forwardRef(
+const CheckBoxGroup = forwardRef(
   (
     {
       options,
@@ -45,7 +45,7 @@ const CheckBoxGroup = React.forwardRef(
           {options.map((option, index) => {
             return (
               <div
-                className="flex items-center justify-between text-sky-500"
+                className="flex items-center justify-between text-sky-500 "
                 key={index}
               >
                 <CheckBox

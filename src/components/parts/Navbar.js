@@ -28,8 +28,8 @@ export default function Navbar() {
   };
 
   return (
-    <div className="z-50">
-      <nav className="h-20 bg-sky-500 text-gray-600  w-full fixed drop-shadow z-50">
+    <div className="z-50 bg-sky-400">
+      <nav className="h-20 bg-sky-500 text-gray-600  w-full fixed drop-shadow z-50 ">
         <ul className="flex items-center justify-between h-full px-5 drop-shadow ">
           <Link to="/">
             <li className="rounded-full bg-sky-500 hover:bg-sky-400 p-2 text-blue-100 z-50">

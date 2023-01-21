@@ -12,7 +12,7 @@ import { postFunc } from "../../../services/mainApiServices";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 
-export default function Autocomplete({
+const Autocomplete = ({
   value,
   onChange,
   url,
@@ -21,7 +21,7 @@ export default function Autocomplete({
   clickStarIcon,
   clickStarBorderIcon,
   handleItem
-}) {
+}) => {
   const handleChange = data => {
     onChange(data);
   };
@@ -88,7 +88,7 @@ export default function Autocomplete({
       </ul>
     </div>
   );
-}
+};
 
 Autocomplete.defaultProps = {
   value: "",
@@ -100,3 +100,5 @@ Autocomplete.defaultProps = {
   clickStarBorderIcon: () => {},
   handleItem: () => {}
 };
+
+export default Autocomplete;

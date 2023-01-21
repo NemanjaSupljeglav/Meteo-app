@@ -1,15 +1,16 @@
 //React
-import React, { useState } from "react";
-
+import React, { useState, createContext } from "react";
+import moment from "moment/moment";
 //Services
 import { postFunc } from "../src/services/mainApiServices";
 
-export const MeteoContext = React.createContext();
+export const MeteoContext = createContext();
 
 const MeteoProvider = ({ children }) => {
   const [favourite, setFavourite] = useState([]);
   const [cityList, setCityList] = useState([]);
   const [oneDetails, setOneDetails] = useState(null);
+  const [dataForChart, setDataForChart] = useState([]);
 
   const handleAdFavourite = data => {
     data["status"] = true;
@@ -63,8 +64,18 @@ const MeteoProvider = ({ children }) => {
     );
     setOneDetails({ response: response, data: data });
     setCityList([]);
-    console.log(response, "one detalj");
-    console.log(data, "one dataaa");
+
+    const chartData = [];
+    response?.hourly?.temperature_2m.map((item, index) => {
+      if (index < 25) {
+        chartData.push({
+          day: moment(response?.hourly?.time[index]).format("MMM Do"),
+          data: item
+        });
+      } else return null;
+    });
+    setDataForChart(chartData);
+    console.log(chartData, "one detalj");
   };
 
   const clearOneDetails = () => {
@@ -76,6 +87,7 @@ const MeteoProvider = ({ children }) => {
         favourite,
         cityList,
         oneDetails,
+        dataForChart,
         handleAdFavourite,
         handleRemoveFavourite,
         handleAscendingDescending,

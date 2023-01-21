@@ -1,7 +1,7 @@
 //React
 import React from "react";
 
-export default function SelectList({ value, onChange, items }) {
+const SelectList = ({ value, onChange, items }) => {
   return (
     <div className="w-full text-4xl mt-3 max-w-max px-1 py-1 rounded-md ">
       <select
@@ -16,10 +16,12 @@ export default function SelectList({ value, onChange, items }) {
       </select>
     </div>
   );
-}
+};
 
 SelectList.defaultProps = {
   value: "",
   onChange: () => {},
   items: []
 };
+
+export default SelectList;
