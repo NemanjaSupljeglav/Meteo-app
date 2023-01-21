@@ -49,7 +49,7 @@ export default function Autocomplete({
         onChange={e => handleChange(e.target.value)}
         placeholder="Search"
       />
-      <ul className="flex flex-col  h-full w-full bg-sky-100 border-b border-l border-r border-sky-500 rounded-b-md mt-[-7px]">
+      <ul className="flex flex-col   w-full  border-b border-l border-r border-sky-500 rounded-b-md mt-[-7px]">
         {items ? (
           items.map((item, index) => (
             <li
@@ -91,18 +91,12 @@ export default function Autocomplete({
 }
 
 Autocomplete.defaultProps = {
-  type: "text",
   value: "",
-  error: false,
-  helperText: "",
-  defaultText: "",
-  required: false,
-  disabled: false,
-  name: "",
-  showAll: false,
-  showDefault: false,
-  showValueAndText: false,
-  showText: false,
-  id: "",
-  clear: true
+  onChange: () => {},
+  url: "",
+  items: [],
+  setItems: () => {},
+  clickStarIcon: () => {},
+  clickStarBorderIcon: () => {},
+  handleItem: () => {}
 };

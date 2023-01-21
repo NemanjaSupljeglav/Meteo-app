@@ -61,21 +61,27 @@ const MeteoProvider = ({ children }) => {
       `https://api.open-meteo.com/v1/forecast?latitude=${data?.latitude}&longitude=${data?.longitude}&hourly=temperature_2m&timeformat=unixtime`,
       body
     );
-    setOneDetails(response);
+    setOneDetails({ response: response, data: data });
     setCityList([]);
-    console.log(oneDetails, "one detalj");
+    console.log(response, "one detalj");
+    console.log(data, "one dataaa");
   };
 
+  const clearOneDetails = () => {
+    setOneDetails(null);
+  };
   return (
     <MeteoContext.Provider
       value={{
         favourite,
         cityList,
+        oneDetails,
         handleAdFavourite,
         handleRemoveFavourite,
         handleAscendingDescending,
         handleAutocompleteList,
-        handleGetOneDetails
+        handleGetOneDetails,
+        clearOneDetails
       }}
     >
       {children}

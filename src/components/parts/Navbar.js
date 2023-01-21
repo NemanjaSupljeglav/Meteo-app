@@ -39,7 +39,7 @@ export default function Navbar() {
               />
             </li>
           </Link>
-          <h1 className="text-blue-100 font-bold">Meteo app</h1>
+          <h1 className="text-blue-100 font-bold">Frontend test</h1>
           <Link
             onClick={() => setIsNavOpen(prev => !prev)}
             className="rounded-full bg-sky-500 hover:bg-sky-400 sm:hidden p-2 text-blue-100"
@@ -79,7 +79,7 @@ export default function Navbar() {
                   >
                     <Link
                       to="/details"
-                      className="mr-auto text-blue-100 font-bold hover:text-blue-200"
+                      className="mr-auto text-blue-100 font-bold hover:text-blue-200 pt-1"
                       onClick={() => {
                         handleGetDetails(item);
                         setIsNavOpen(prev => !prev);
@@ -120,7 +120,7 @@ export default function Navbar() {
                 >
                   <Link
                     to="/details"
-                    className="mr-auto text-blue-100 font-bold hover:text-blue-200"
+                    className="mr-auto text-blue-100 font-bold hover:text-blue-200 pt-1"
                     onClick={() => handleGetDetails(item)}
                   >
                     {item?.name}

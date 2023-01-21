@@ -30,21 +30,26 @@ export default function Home() {
     context.handleAutocompleteList(citys);
   }, [citys]);
 
+  useEffect(() => {
+    context.clearOneDetails();
+  }, []);
+
   return (
-    <div className="mt-20 w-screen h-full flex justify-center snap-none ">
-      <div>
-        <div className=" mx-3">
-          <Autocomplete
-            value={city}
-            onChange={setCity}
-            clickStarIcon={handleRemoveFavourite}
-            clickStarBorderIcon={handleFavourite}
-            items={context?.cityList}
-            setItems={setCitys}
-            url={`https://geocoding-api.open-meteo.com/v1/search?name=${city}`}
-            handleItem={handleGetDetails}
-          />
-        </div>
+    <div className="mt-20 w-screen h-full flex justify-center flex-col">
+      <h1 className="mt-6 text-sky-600 drop-shadow  flex justify-center text-xl">
+        Meteo app
+      </h1>
+      <div className=" mx-3 flex justify-center">
+        <Autocomplete
+          value={city}
+          onChange={setCity}
+          clickStarIcon={handleRemoveFavourite}
+          clickStarBorderIcon={handleFavourite}
+          items={context?.cityList}
+          setItems={setCitys}
+          url={`https://geocoding-api.open-meteo.com/v1/search?name=${city}`}
+          handleItem={handleGetDetails}
+        />
       </div>
     </div>
   );
