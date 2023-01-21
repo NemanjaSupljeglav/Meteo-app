@@ -23,6 +23,10 @@ export default function Navbar() {
     context.handleAscendingDescending();
   };
 
+  const handleGetDetails = data => {
+    context.handleGetOneDetails(data);
+  };
+
   return (
     <div className="z-50">
       <nav className="h-20 bg-sky-500 text-gray-600  w-full fixed drop-shadow z-50">
@@ -73,12 +77,16 @@ export default function Navbar() {
                     className="flex  my-1 mx-2  p-3 rounded-md bg-sky-500"
                     key={item?.id}
                   >
-                    <button
-                      href="/portfolio"
+                    <Link
+                      to="/details"
                       className="mr-auto text-blue-100 font-bold hover:text-blue-200"
+                      onClick={() => {
+                        handleGetDetails(item);
+                        setIsNavOpen(prev => !prev);
+                      }}
                     >
                       {item?.name}
-                    </button>
+                    </Link>
                     <DeleteOutlineIcon
                       fontSize="large"
                       className="rounded-full p-2 hover:cursor-pointer hover:bg-sky-400 text-blue-100 bg-sky-500 drop-shadow"
@@ -110,12 +118,13 @@ export default function Navbar() {
                   className="flex  my-1 mx-2  p-3 rounded-md bg-sky-500"
                   key={item?.id}
                 >
-                  <button
-                    href="/portfolio"
+                  <Link
+                    to="/details"
                     className="mr-auto text-blue-100 font-bold hover:text-blue-200"
+                    onClick={() => handleGetDetails(item)}
                   >
                     {item?.name}
-                  </button>
+                  </Link>
                   <DeleteOutlineIcon
                     fontSize="large"
                     className="rounded-full p-2 hover:cursor-pointer hover:bg-sky-400 text-blue-100 bg-sky-500 drop-shadow"

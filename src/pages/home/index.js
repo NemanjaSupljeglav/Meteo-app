@@ -25,6 +25,7 @@ export default function Home() {
   const handleGetDetails = data => {
     context.handleGetOneDetails(data);
   };
+
   useEffect(() => {
     context.handleAutocompleteList(citys);
   }, [citys]);

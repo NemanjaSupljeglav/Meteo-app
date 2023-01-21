@@ -3,6 +3,7 @@
 
 //React
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Services
 import { postFunc } from "../../../services/mainApiServices";
@@ -59,13 +60,13 @@ export default function Autocomplete({
               }
               key={item?.id}
             >
-              <button
-                href="/portfolio"
-                className="mr-auto text-gray-500 hover:text-gray-600 text-lg px-6 py-3"
+              <Link
+                to="/details"
+                className="mr-auto text-gray-500 hover:text-gray-600 text-lg px-6 pb-3 pt-5"
                 onClick={() => handleItem(item)}
               >
                 {item?.name}
-              </button>
+              </Link>
               {item?.status ? (
                 <StarIcon
                   fontSize="large"

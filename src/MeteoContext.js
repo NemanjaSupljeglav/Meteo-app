@@ -48,11 +48,9 @@ const MeteoProvider = ({ children }) => {
     });
 
     setCityList(myData);
-    console.log(myData, "cityList");
   };
 
   const handleGetOneDetails = async data => {
-    console.log(data, "sta se saljeee");
     const body = {
       latitude: data?.latitude,
       longitude: data?.longitude,
@@ -64,6 +62,8 @@ const MeteoProvider = ({ children }) => {
       body
     );
     setOneDetails(response);
+    setCityList([]);
+    console.log(oneDetails, "one detalj");
   };
 
   return (
