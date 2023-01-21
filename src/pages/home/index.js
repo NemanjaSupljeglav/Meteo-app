@@ -1,15 +1,48 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+
+//React
+import React, { useEffect, useContext, useState } from "react";
+
+//Atoms
 import Autocomplete from "../../components/atoms/inputs/Autocomplete";
 
+//Context
+import { MeteoContext } from "../../MeteoContext";
+
 export default function Home() {
+  //state
+  const [city, setCity] = useState("");
+  const [citys, setCitys] = useState([]);
+
+  const context = useContext(MeteoContext);
+
+  const handleFavourite = data => {
+    context.handleAdFavourite(data);
+  };
+  const handleRemoveFavourite = data => {
+    context.handleRemoveFavourite(data);
+  };
+  const handleGetDetails = data => {
+    context.handleGetOneDetails(data);
+  };
+  useEffect(() => {
+    context.handleAutocompleteList(citys);
+  }, [citys]);
+
   return (
-    <div className="mt-20 w-screen h-full flex justify-center ">
+    <div className="mt-20 w-screen h-full flex justify-center snap-none ">
       <div>
-        {/*    <div className="bg-sky-400 text-4xl rounded-full mt-3 max-w-max px-6 py-3 text-blue-100 ">
-          Meteo app
-        </div> */}
-        <div className="bg-sky-400 text-4xl mt-3 max-w-max px-1 py-1 rounded-lg mx-3">
-          <Autocomplete />
+        <div className=" mx-3">
+          <Autocomplete
+            value={city}
+            onChange={setCity}
+            clickStarIcon={handleRemoveFavourite}
+            clickStarBorderIcon={handleFavourite}
+            items={context?.cityList}
+            setItems={setCitys}
+            url={`https://geocoding-api.open-meteo.com/v1/search?name=${city}`}
+            handleItem={handleGetDetails}
+          />
         </div>
       </div>
     </div>

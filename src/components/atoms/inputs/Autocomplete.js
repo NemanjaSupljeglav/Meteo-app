@@ -1,24 +1,90 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable default-case */
-import React, { useEffect, useRef, useState } from "react";
 
-export default function Autocomplete({ options, value, onChange }) {
-  const [showOptions, setShowOptions] = useState(false);
-  const [cursor, setCursor] = useState(-1);
-  const [parentState, setParentState] = useState("");
+//React
+import React, { useEffect } from "react";
 
+// Services
+import { postFunc } from "../../../services/mainApiServices";
+
+//MUI
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import StarIcon from "@mui/icons-material/Star";
+
+export default function Autocomplete({
+  value,
+  onChange,
+  url,
+  items,
+  setItems,
+  clickStarIcon,
+  clickStarBorderIcon,
+  handleItem
+}) {
   const handleChange = data => {
-    setParentState(data);
+    onChange(data);
+  };
+  const handleAddItem = data => {
+    clickStarBorderIcon(data);
+  };
+  const handleRemoveItem = data => {
+    clickStarIcon(data);
+  };
+  const searchFunc = async () => {
+    const response = await postFunc(url, value);
+    setItems(response);
   };
 
+  useEffect(() => {
+    if (value) searchFunc();
+  }, [value]);
+
   return (
-    <div className="w-full  mr-16">
+    <div className="w-full text-4xl mt-3 max-w-max px-1 py-1 rounded-md">
       <input
         type="text"
-        className="w-full border-1 px-8 py-3  rounded-lg focus:outline-none focus:ring focus:border-blue-700 text-gray-500 bg-sky-100 text-lg"
-        value={parentState}
+        className="w-full px-6 py-3  rounded-lg focus:outline-none focus:ring focus:border-sky-500 text-gray-500 bg-sky-100 text-lg border-solid border-2 border-sky-500"
+        value={value}
         onChange={e => handleChange(e.target.value)}
-        onFocus={() => setShowOptions(true)}
+        placeholder="Search"
       />
+      <ul className="flex flex-col  h-full w-full bg-sky-100 border-b border-l border-r border-sky-500 rounded-b-md mt-[-7px]">
+        {items ? (
+          items.map((item, index) => (
+            <li
+              className={
+                index === 0
+                  ? "flex  mb-1   border-sky-500 pt-1"
+                  : "flex  mb-1   border-t border-sky-500"
+              }
+              key={item?.id}
+            >
+              <button
+                href="/portfolio"
+                className="mr-auto text-gray-500 hover:text-gray-600 text-lg px-6 py-3"
+                onClick={() => handleItem(item)}
+              >
+                {item?.name}
+              </button>
+              {item?.status ? (
+                <StarIcon
+                  fontSize="large"
+                  className="rounded-full p-2 m-3 hover:cursor-pointer hover:bg-sky-200 text-sky-500 drop-shadow"
+                  onClick={() => handleRemoveItem(item)}
+                />
+              ) : (
+                <StarBorderIcon
+                  fontSize="large"
+                  className="rounded-full p-2 m-3 hover:cursor-pointer hover:bg-sky-200 text-sky-500 drop-shadow"
+                  onClick={() => handleAddItem(item)}
+                />
+              )}
+            </li>
+          ))
+        ) : (
+          <></>
+        )}
+      </ul>
     </div>
   );
 }

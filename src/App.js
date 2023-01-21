@@ -10,17 +10,22 @@ import Home from "./pages/home";
 import Details from "./pages/details";
 import Settings from "./pages/settings";
 
+//Context
+import MeteoProvider from "./MeteoContext";
+
 export default function App() {
   return (
-    <Router>
-      <div className="flex">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/details" element={<Details />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
-      </div>
-    </Router>
+    <MeteoProvider>
+      <Router>
+        <div className="flex">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/details" element={<Details />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </div>
+      </Router>
+    </MeteoProvider>
   );
 }
