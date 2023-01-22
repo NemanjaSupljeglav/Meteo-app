@@ -36,10 +36,13 @@ export default function Navbar() {
               <HomeOutlinedIcon
                 fontSize="large"
                 className="text-blue-100 font-medium"
+                datacy="homeIcon"
               />
             </li>
           </Link>
-          <h1 className="text-blue-100 font-bold">Frontend test</h1>
+          <h1 className="text-blue-100 font-bold" datacy="navTitle">
+            Frontend test
+          </h1>
           <Link
             onClick={() => setIsNavOpen(prev => !prev)}
             className="rounded-full bg-sky-500 hover:bg-sky-400 sm:hidden p-2 text-blue-100"
@@ -62,11 +65,14 @@ export default function Navbar() {
             }
           >
             <div className="py-2 w-full text-blue-100 font-bold  flex flex-row align-middle mt-0">
-              <div className="mt-12  ml-4 mr-auto">Favourites</div>
+              <div className="mt-12  ml-4 mr-auto" datacy="favourites">
+                Favourites
+              </div>
               <SortByAlphaIcon
                 fontSize="large"
                 className="rounded-full p-2 hover:cursor-pointer hover:bg-sky-400 text-blue-100 bg-sky-500  drop-shadow mt-11 mr-5"
                 onClick={() => handleAscendingDescending()}
+                datacy="sortIcon"
               />
             </div>
 
@@ -91,11 +97,17 @@ export default function Navbar() {
                       fontSize="large"
                       className="rounded-full p-2 hover:cursor-pointer hover:bg-sky-400 text-blue-100 bg-sky-500 drop-shadow"
                       onClick={() => handleRemoveFavourite(item)}
+                      datacy="delete"
                     />
                   </li>
                 ))
               ) : (
-                <li className="flex  my-1 mx-2  p-3 text-blue-100">Empty</li>
+                <li
+                  className="flex  my-1 mx-2  p-3 text-blue-100"
+                  datacy="empty"
+                >
+                  Empty
+                </li>
               )}
             </ul>
           </div>
@@ -103,11 +115,14 @@ export default function Navbar() {
 
         <div className="hidden  sm:flex flex-col h-screen bg-sky-400 min-w-[250px] mt-10  top-0 ">
           <div className="py-2 w-64 text-blue-100 font-bold  flex flex-row align-middle mt-11">
-            <div className="mt-12  ml-4">Favourites</div>
+            <div className="mt-12  ml-4" datacy="favourites">
+              Favourites
+            </div>
             <SortByAlphaIcon
               fontSize="large"
               className="rounded-full p-2 hover:cursor-pointer hover:bg-sky-400 text-blue-100 bg-sky-500 ml-auto mr-5 drop-shadow mt-11"
               onClick={() => handleAscendingDescending()}
+              datacy="sortIcon"
             />
           </div>
 
@@ -129,11 +144,14 @@ export default function Navbar() {
                     fontSize="large"
                     className="rounded-full p-2 hover:cursor-pointer hover:bg-sky-400 text-blue-100 bg-sky-500 drop-shadow"
                     onClick={() => handleRemoveFavourite(item)}
+                    datacy="delete"
                   />
                 </li>
               ))
             ) : (
-              <li className="flex  my-1 mx-2  p-3 text-blue-100">Empty</li>
+              <li className="flex  my-1 mx-2  p-3 text-blue-100" datacy="empty">
+                Empty
+              </li>
             )}
           </ul>
         </div>

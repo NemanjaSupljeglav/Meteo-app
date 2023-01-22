@@ -75,7 +75,6 @@ const MeteoProvider = ({ children }) => {
       } else return null;
     });
     setDataForChart(chartData);
-    console.log(chartData, "one detalj");
   };
 
   const clearOneDetails = () => {

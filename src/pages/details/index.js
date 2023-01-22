@@ -21,11 +21,19 @@ export default function Details() {
   const context = useContext(MeteoContext);
   return context?.oneDetails ? (
     <div className="mt-20 w-screen  overflow-auto ">
-      <h1 className="mt-6 text-sky-600 drop-shadow  flex justify-center text-xl ">
+      <h1
+        className="mt-6 text-sky-600 drop-shadow  flex justify-center text-xl "
+        datacy="titleDetails"
+      >
         Meteorologic data for {context?.oneDetails?.data?.name}
       </h1>
       <div className="mx-3 flex justify-center">
-        <SelectList value={viewType} onChange={setViewType} items={items} />
+        <SelectList
+          value={viewType}
+          onChange={setViewType}
+          items={items}
+          datacy="selectType"
+        />
       </div>
       {viewType === "Hourly View" ? (
         <>
@@ -88,7 +96,7 @@ export default function Details() {
         </>
       ) : viewType === "Daily View" ? (
         <>
-          <div className="mt-5 text-sky-500 drop-shadow  flex justify-left text-xl ml-6 w">
+          <div className="mt-5 text-sky-500 drop-shadow  flex justify-left text-xl ml-6">
             Hourly Weather Variables
           </div>
           <div className="mt-1 text-sky-600 w-full grid md:grid-cols-2 lg:grid-cols-2 ">
@@ -124,7 +132,11 @@ export default function Details() {
       )}
 
       <div className="mt-6 text-sky-600 drop-shadow ">
-        <DrawChart data={context?.dataForChart} />
+        <DrawChart
+          data={context?.dataForChart}
+          dataKeyX="day"
+          dataKeyY="data"
+        />
       </div>
     </div>
   ) : (

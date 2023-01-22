@@ -20,7 +20,8 @@ const Autocomplete = ({
   setItems,
   clickStarIcon,
   clickStarBorderIcon,
-  handleItem
+  handleItem,
+  datacy
 }) => {
   const handleChange = data => {
     onChange(data);
@@ -48,6 +49,7 @@ const Autocomplete = ({
         value={value}
         onChange={e => handleChange(e.target.value)}
         placeholder="Search"
+        datacy={datacy}
       />
       <ul className="flex flex-col   w-full  border-b border-l border-r border-sky-500 rounded-b-md mt-[-7px]">
         {items ? (
@@ -72,12 +74,14 @@ const Autocomplete = ({
                   fontSize="large"
                   className="rounded-full p-2 m-3 hover:cursor-pointer hover:bg-sky-200 text-sky-500 drop-shadow"
                   onClick={() => handleRemoveItem(item)}
+                  datacy="starIcon"
                 />
               ) : (
                 <StarBorderIcon
                   fontSize="large"
                   className="rounded-full p-2 m-3 hover:cursor-pointer hover:bg-sky-200 text-sky-500 drop-shadow"
                   onClick={() => handleAddItem(item)}
+                  datacy="StarBorderIcon"
                 />
               )}
             </li>

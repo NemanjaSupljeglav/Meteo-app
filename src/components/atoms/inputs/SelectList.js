@@ -1,7 +1,7 @@
 //React
 import React from "react";
 
-const SelectList = ({ value, onChange, items }) => {
+const SelectList = ({ value, onChange, items, datacy }) => {
   return (
     <div className="w-full text-4xl mt-3 max-w-max px-1 py-1 rounded-md ">
       <select
@@ -9,6 +9,7 @@ const SelectList = ({ value, onChange, items }) => {
         placeholder="Hourly View"
         value={value}
         className="w-64 px-1 py-3  rounded-lg focus:outline-none focus:ring focus:border-sky-500 text-gray-500 bg-sky-100 text-lg border-solid border-2 border-sky-500 "
+        datacy={datacy}
       >
         {items?.map(item => (
           <option key={item?.id}>{item.name}</option>
