@@ -131,7 +131,7 @@ export default function Details() {
         <></>
       )}
 
-      <div className="mt-6 text-sky-600 drop-shadow ">
+      <div className="mt-6 text-sky-600 drop-shadow ml-[-25px]">
         <DrawChart
           data={context?.dataForChart}
           dataKeyX="day"
